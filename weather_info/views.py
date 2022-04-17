@@ -19,7 +19,6 @@ def get_weather_info(request):
     if not no_cache and not no_cache == 1:
         cached_value = Cache().get_key(scode)
         if cached_value:
-            print("<<<<<<<<<<<<<<<<<< Getting it from redis >>>>>>>>>>>>")
             return JsonResponse({'data': json.loads(cached_value)})
 
     url = f"https://tgftp.nws.noaa.gov/data/observations/metar/stations/{scode}.TXT"
